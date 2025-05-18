@@ -1,0 +1,410 @@
+/* ==============================
+    TIMENIX - Smart Screen Time Controller
+    Professional Look, Animations, Dark Mode, Responsive
+================================ */
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: 60px;
+    right: 30px;
+    background: #4caf50;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(76,175,80,0.15);
+    font-size: 1rem;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity 0.4s, transform 0.4s;
+}
+.notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+body.dark .notification {
+    background: #222;
+    color: #a5e7b0;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: #e8f5e9;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.navbar .logo {
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+.nav-links li {
+    display: inline-block;
+}
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+    background-color: #555;
+    box-shadow: 0 2px 6px rgba(76,175,80,0.15);
+    outline: none;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.3s, color 0.3s;
+}
+.theme-toggle:focus {
+    outline: 2px solid #4caf50;
+}
+body.dark .theme-toggle {
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Dashboard */
+.dashboard {
+    margin: 2rem auto 1rem auto;
+    width: 95%;
+    max-width: 1200px;
+}
+.status-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    flex: 1 1 180px;
+    min-width: 180px;
+    text-align: center;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+}
+.card:focus {
+    outline: 2px solid #4caf50;
+}
+.card:hover, .card:focus {
+    box-shadow: 0 8px 32px rgba(76,175,80,0.18), 0 0 16px #4caf50;
+    transform: translateY(-6px) scale(1.03);
+    z-index: 1;
+}
+
+/* Lock Status */
+.lock-status .locked {
+    color: #e53935;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.lock-status .unlocked {
+    color: #43a047;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Main Flex Layout for Logs and Rewards */
+.main-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Usage Logs Section */
+.usage-logs-section {
+    flex: 2 1 340px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: background 0.3s, color 0.3s;
+}
+.usage-logs-section h2 {
+    margin-top: 0;
+}
+#searchLogs {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #cfd8dc;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+#searchLogs:focus {
+    border: 1.5px solid #4caf50;
+    outline: none;
+}
+.usage-logs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.usage-logs li {
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    background: #f3f4f6;
+    color: #333;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    transition: background 0.3s, color 0.3s;
+    font-size: 1rem;
+}
+.usage-logs li:last-child {
+    margin-bottom: 0;
+}
+
+/* Gamification & Rewards */
+.gamification {
+    flex: 1 1 220px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+.gamification h2 {
+    margin-top: 0;
+}
+.points {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4caf50;
+    background: #e8f5e9;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    display: inline-block;
+    letter-spacing: 1px;
+    transition: background 0.3s, color 0.3s;
+}
+body.dark .points {
+    background: #1b2b1b;
+    color: #a5e7b0;
+}
+
+/* Modal Styles */
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.28);
+    z-index: 1000;
+    min-width: 290px;
+    max-width: 90vw;
+    transition: background 0.3s, color 0.3s;
+}
+body.dark .modal {
+    background-color: #232323;
+    color: #eaeaea;
+}
+.modal input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+.modal input:focus {
+    border: 1.5px solid #4caf50;
+    outline: none;
+}
+.modal button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+.modal button:hover, .modal button:focus {
+    background-color: #45a049;
+    outline: none;
+}
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Dark Mode Styles */
+body.dark {
+    background-color: #181818;
+    color: #eaeaea;
+}
+body.dark header {
+    background-color: #222;
+    color: #a5e7b0;
+}
+body.dark .navbar {
+    background-color: #232323;
+}
+body.dark .navbar .logo {
+    color: #a5e7b0;
+}
+body.dark .nav-links li a {
+    color: #eaeaea;
+}
+body.dark .nav-links li a:hover,
+body.dark .nav-links li a:focus {
+    background-color: #333;
+    color: #a5e7b0;
+}
+body.dark .dashboard {
+    color: #eaeaea;
+}
+body.dark .card {
+    background-color: #232323;
+    color: #eaeaea;
+    box-shadow: 0 2px 10px rgba(76,175,80,0.06);
+}
+body.dark .card:hover, body.dark .card:focus {
+    box-shadow: 0 8px 32px rgba(76,175,80,0.16), 0 0 18px #43a047;
+}
+body.dark .usage-logs-section,
+body.dark .gamification {
+    background: #232323;
+    color: #eaeaea;
+    box-shadow: 0 2px 10px rgba(76,175,80,0.07);
+}
+body.dark .usage-logs li {
+    background: #262b2e;
+    color: #a5e7b0;
+}
+body.dark #searchLogs {
+    background: #232323;
+    color: #eaeaea;
+    border: 1px solid #333;
+}
+body.dark #searchLogs:focus {
+    border: 1.5px solid #43a047;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .status-cards {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .main-flex {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .usage-logs-section, .gamification {
+        width: 100%;
+    }
+}
+@media (max-width: 650px) {
+    .status-cards {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .dashboard, .main-flex {
+        width: 99%;
+        padding: 0;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 1rem;
+    }
+    .navbar .logo {
+        padding: 0.7rem 0;
+    }
+}
+
+/* Accessibility: Focus Styles */
+a:focus, button:focus, input:focus {
+    outline: 2px solid #4caf50;
+    outline-offset: 2px;
+}
