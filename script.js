@@ -148,7 +148,7 @@ function fetchUsageLogs() {
     if (today > 90) {
         lockMessage.classList.remove('hidden');
         unlockedMessage.classList.add('hidden');
-        showNotification('Screen Locked! Take a break 😊', 2500);
+        showNotification('Screen Locked! Take a break ', 2500);
     } else {
         lockMessage.classList.add('hidden');
         unlockedMessage.classList.remove('hidden');
